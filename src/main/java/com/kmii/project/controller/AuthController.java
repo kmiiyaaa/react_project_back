@@ -36,9 +36,15 @@ public class AuthController {
 			return ResponseEntity.badRequest().body("이미 존재하는 사용자 입니다.");
 		}
 		
+		SiteUser siteUser = new SiteUser();
+		siteUser.setUsername(req.getUsername());
+		siteUser.setPassword(req.getPassword());
+		
+		
 		//비밀번호 암호화해서 엔티티에 다시 넣기
 		req.setPassword(passwordEncoder.encode(req.getPassword()));
 		userRepository.save(req);	
+		
 		
 		return ResponseEntity.ok("회원가입 성공!");
 		

@@ -22,7 +22,7 @@ public class Board {
 	private Long id; // 게시판 번호
 	
 	private String title;  // 게시판 글 제목
-	private String contnet; // 게시판 글 내용
+	private String content; // 게시판 글 내용
 	
 	@CreationTimestamp 
 	private LocalDateTime createDate; // 게시판 글 작성날짜
