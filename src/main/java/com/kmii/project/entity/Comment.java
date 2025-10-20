@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -36,5 +37,11 @@ public class Comment {
 	@JoinColumn(name="author id") // join되는 테이블의 외래키 이름 지정
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // Hibernate 내부용 필드는 무시하고, 실제 유저 정보만 JSON으로 보내라
 	private SiteUser author;
+	
+	
+	@ManyToOne()
+	@JoinColumn(name="board id")
+	@JsonIgnore
+	private Board board;  //댓글에 달릴 원 게시글의 id
 	
 }

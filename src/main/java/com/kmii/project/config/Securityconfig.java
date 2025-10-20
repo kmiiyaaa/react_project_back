@@ -60,14 +60,14 @@ public class Securityconfig {
 	                   .authenticated()           
 	               .anyRequest().authenticated()
 	           )         
-//	           .formLogin(login -> login    
-//	              .loginPage("/login").permitAll()   
-//	               .loginProcessingUrl("/api/auth/login")
-//	               .usernameParameter("username")
-//	               .passwordParameter("password")
-//	               .successHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_OK))
-//	               .failureHandler((req, res, ex) -> res.setStatus(HttpServletResponse.SC_UNAUTHORIZED))
-//	           )
+	           .formLogin(login -> login    
+	              .loginPage("/login").permitAll()   
+	               .loginProcessingUrl("/api/auth/login")
+	               .usernameParameter("username")
+	               .passwordParameter("password")
+	               .successHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_OK))
+	               .failureHandler((req, res, ex) -> res.setStatus(HttpServletResponse.SC_UNAUTHORIZED))
+	           )
 	           .logout(logout -> logout
 	               .logoutUrl("/api/auth/logout")
 	               .logoutSuccessHandler((req, res, auth) -> res.setStatus(HttpServletResponse.SC_OK))
