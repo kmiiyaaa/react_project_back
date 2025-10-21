@@ -39,7 +39,7 @@ public class Comment {
 	private SiteUser author;
 	
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="board id")
 	@JsonIgnore
 	private Board board;  //댓글에 달릴 원 게시글의 id
