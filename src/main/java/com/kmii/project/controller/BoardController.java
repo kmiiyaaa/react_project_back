@@ -49,7 +49,9 @@ public class BoardController {
 		board.setContent(req.getContent());
 		board.setAuthor(siteUser);
 		
+		boardRepository.save(board);
 		return ResponseEntity.ok(board);
+		
 	}
 	
 	// 특정 게시글 번호(id)로 조회 (글 상세보기)
