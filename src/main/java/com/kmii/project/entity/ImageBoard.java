@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,18 +12,10 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
-
 @Entity
 @Getter
 @Setter
-public class Board {
-	
-	public enum BoardType {
-	    FREE,      // 자유게시판
-	    IMAGE      // 이미지 게시판
-	}
+public class ImageBoard {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +35,5 @@ public class Board {
 	
 	private String imageUrl;// 이미지 url
 	
-	@Enumerated(EnumType.STRING)
-	private BoardType boardType; // 게시판 구분 필드 추가
 
 }

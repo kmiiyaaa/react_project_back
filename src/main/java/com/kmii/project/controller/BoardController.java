@@ -154,7 +154,16 @@ public class BoardController {
 		
 		Optional<Board> _board = boardRepository.findById(id);
 		if(_board.isPresent()) {
-			return ResponseEntity.ok(_board.get()); // 해당 id글을 반환
+			//return ResponseEntity.ok(_board.get()); // 해당 id글을 반환
+			Board board = _board.get();
+
+	        // 조회수 증가
+	        board.setViewCount(board.getViewCount() + 1);
+	        boardRepository.save(board);
+
+	        // DTO로 변환 후 반환
+	        BoardResponseDto responseDto = new BoardResponseDto(board);
+	        return ResponseEntity.ok(responseDto);
 		}  else {
 			return ResponseEntity.status(404).body("해당 게시글은 존재하지 않습니다.");
 		}

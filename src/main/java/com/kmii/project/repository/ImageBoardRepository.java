@@ -4,11 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.kmii.project.entity.Board;
 import com.kmii.project.entity.ImageBoard;
 
-
-public interface BoardRepository extends JpaRepository<Board, Long>{
-
-
+public interface ImageBoardRepository extends JpaRepository<ImageBoard, Long> {
+    Page<ImageBoard> findAll(Pageable pageable);
 }
