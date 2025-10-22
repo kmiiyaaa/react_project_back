@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fffaf3;
+  border-bottom: 2px solid #ffe0b2;
+  padding: 15px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar div:first-child {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ff7b00;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.menu a:hover {
+  color: #f3b377;
+}
+
+.menu button {
+  background-color: burlywood;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.menu button:hover {
+  background-color: #ff9500;
+}

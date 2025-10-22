@@ -1,0 +1,114 @@
+/* ---------------------------------
+   🎨 게시판 전체 컨테이너
+--------------------------------- */
+.board-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fffaf3;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 제목 */
+.board-container h2 {
+  text-align: center;
+  color: #fca04a;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+/* ---------------------------------
+   📋 게시글 테이블
+--------------------------------- */
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.board-table th,
+.board-table td {
+  border-bottom: 1px solid #f1e2d0;
+  padding: 14px 10px;
+  text-align: center;
+  color: #333;
+}
+
+.board-table th {
+  background-color: #ffe7c7;
+  color: #333;
+  font-weight: bold;
+}
+
+.board-table tr:hover {
+  background-color: #fff2e0;
+  transition: background-color 0.2s ease;
+}
+
+/* 제목 클릭 가능한 부분 */
+.click-title {
+  color: #ff7b00;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.click-title:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------
+   ⏩ 페이지네이션
+--------------------------------- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 25px 0 10px;
+}
+
+.pagination button {
+  border: none;
+  background-color: #fff7eb;
+  color: #444;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.pagination button:hover {
+  background-color: #f5cf9a;
+}
+
+.pagination .active {
+  background-color: #f3b46b;
+  color: white;
+  font-weight: bold;
+}
+
+/* ---------------------------------
+   ✏️ 글쓰기 버튼
+--------------------------------- */
+.write-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write-button button {
+  background-color: #f3b46b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.write-button button:hover {
+  background-color: #ff9500;
+}

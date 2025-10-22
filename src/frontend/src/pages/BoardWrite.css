@@ -1,0 +1,100 @@
+/* 전체 폼 컨테이너 */
+.board-write-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.board-write-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 */
+.board-write-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #333;
+}
+
+/* 입력 필드 */
+.board-write-container input[type="text"],
+.board-write-container textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+  transition: border 0.2s ease, background-color 0.2s ease;
+  resize: none;
+}
+
+/* 포커스 시 효과 */
+.board-write-container input:focus,
+.board-write-container textarea:focus {
+  outline: none;
+  border-color: #7bc5ae;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(123, 197, 174, 0.2);
+}
+
+/* textarea 높이 조정 */
+.board-write-container textarea {
+  min-height: 200px;
+  line-height: 1.6;
+}
+
+/* 버튼 영역 */
+.board-write-container div {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* 버튼 스타일 */
+.board-write-container button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+/* 등록 버튼 */
+.board-write-container button[type="submit"] {
+  background-color: #9ea6ec;
+  color: white;
+}
+
+.board-write-container button[type="submit"]:hover {
+  background-color: #afcce7;
+  transform: scale(1.03);
+}
+
+/* 취소 버튼 */
+.board-write-container button[type="button"] {
+  background-color: #f7b4b4;
+  color: #faf4f4;
+}
+
+.board-write-container button[type="button"]:hover {
+  background-color: #d6d6d6;
+  transform: scale(1.03);
+}
+
+/* 에러 메시지 */
+.error-message {
+  color: #d9534f;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
