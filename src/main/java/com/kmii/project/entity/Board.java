@@ -1,16 +1,24 @@
 package com.kmii.project.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,10 +30,6 @@ import lombok.Setter;
 @Setter
 public class Board {
 	
-	public enum BoardType {
-	    FREE,      // 자유게시판
-	    IMAGE      // 이미지 게시판
-	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +42,19 @@ public class Board {
 	private LocalDateTime createDate; // 게시판 글 작성날짜
 
 	
-	@ManyToOne // 게시글 : 작성자 = N:1
+	@ManyToOne(fetch = FetchType.LAZY) // 게시글 : 작성자 = N:1
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private SiteUser author; // 게시판 작성자
 	
 	private int viewCount=0; //조회수 
 	
 	private String imageUrl;// 이미지 url
 	
-	@Enumerated(EnumType.STRING)
-	private BoardType boardType; // 게시판 구분 필드 추가
+	
+	@OneToMany(mappedBy = "board")
+	private List<Comment> comment = new ArrayList<>();
+	
+	
+	
 
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -34,13 +35,13 @@ public class Comment {
 	private LocalDateTime createDate; // 댓글 입력 날짜+시간
 
 	@ManyToOne(fetch = FetchType.LAZY) // 댓글 : 작성자 = N:1 (작성자 한명이 댓글 여러개 작성 가능)
-	@JoinColumn(name="author id") // join되는 테이블의 외래키 이름 지정
+	//@JoinColumn(name="author id") // join되는 테이블의 외래키 이름 지정
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // Hibernate 내부용 필드는 무시하고, 실제 유저 정보만 JSON으로 보내라
 	private SiteUser author;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="board id")
+	//@JoinColumn(name="board id")
 	@JsonIgnore
 	private Board board;  //댓글에 달릴 원 게시글의 id
 	
