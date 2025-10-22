@@ -28,7 +28,7 @@ public class Comment {
 	private Long id;  // 댓글 번호
 	
 	@Column(nullable = false, length = 300)
-	private String contnet; // 댓글 내용
+	private String content; // 댓글 내용
 	
 	@CreationTimestamp
 	private LocalDateTime createDate; // 댓글 입력 날짜+시간

@@ -79,7 +79,9 @@ public class CommentController {
 		Comment comment = new Comment();
 		comment.setBoard(_board.get());
 		comment.setAuthor(user);
-		comment.setContnet(commentDto.getContent());
+		comment.setContent(commentDto.getContent());
+
+		
 		
 		commentRepository.save(comment);
 		
@@ -119,7 +121,7 @@ public class CommentController {
 			return ResponseEntity.status(403).body("수정 권한이 없습니다.");
 		}
 		
-		comment.setContnet(commentDto.getContent());
+		comment.setContent(commentDto.getContent());
 		commentRepository.save(comment);
 		
 		return ResponseEntity.ok(comment);

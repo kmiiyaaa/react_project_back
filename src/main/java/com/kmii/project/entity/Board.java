@@ -30,5 +30,7 @@ public class Board {
 	
 	@ManyToOne // 게시글 : 작성자 = N:1
 	private SiteUser author; // 게시판 작성자
+	
+	private int viewCount=0; //조회수 
 
 }

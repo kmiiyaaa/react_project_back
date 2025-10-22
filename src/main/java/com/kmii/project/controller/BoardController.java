@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kmii.project.dto.BoardDto;
+import com.kmii.project.dto.BoardResponseDto;
 import com.kmii.project.entity.Board;
 import com.kmii.project.entity.SiteUser;
 import com.kmii.project.repository.BoardRepository;
@@ -54,25 +55,42 @@ public class BoardController {
 	public ResponseEntity<?> pagingList(@RequestParam(name="page", defaultValue = "0") int page,
 			@RequestParam(name="size", defaultValue = "10")int size) {
 		
-		if(page<0) {
-			page=0;
-		}
+//		if(page<0) {
+//			page=0;
+//		}
+//		
+//		if(size <=0) {
+//			size = 10;
+//		}
+//		
+//		 //Pageable 객체 생성 -> findAll에서 사용
+//		Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
+//		Page<Board> boardPage = boardRepository.findAll(pageable); //DB에서 페이징된 게시글만 조회  
+//		
+//		Map<String, Object> pagingResponse = new HashMap<>();
+//		pagingResponse.put("posts", boardPage.getContent()); // 페이징된 현재 페이지에 해당하는 게시글 리스트
+//		pagingResponse.put("currentPage", boardPage.getNumber()); // 현재 페이지 번호
+//		pagingResponse.put("totalPages", boardPage.getTotalPages()); //모든 페이지수
+//	    pagingResponse.put("totalItems", boardPage.getTotalElements());  // 모든 글 수 
+//		
+//		return ResponseEntity.ok(pagingResponse);
 		
-		if(size <=0) {
-			size = 10;
-		}
+		 Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
+		 Page<Board> boardPage = boardRepository.findAll(pageable);
+
+		 Map<String, Object> pagingResponse = new HashMap<>();
+		 List<BoardResponseDto> dtoList = boardPage.getContent().stream()
+		                                          .map(BoardResponseDto::new)
+		                                          .toList();
+
+		 pagingResponse.put("posts", dtoList);
+		 pagingResponse.put("currentPage", boardPage.getNumber());
+		 pagingResponse.put("totalPages", boardPage.getTotalPages());
+		 pagingResponse.put("totalItems", boardPage.getTotalElements());
+
+		 return ResponseEntity.ok(pagingResponse);
 		
-		 //Pageable 객체 생성 -> findAll에서 사용
-		Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
-		Page<Board> boardPage = boardRepository.findAll(pageable); //DB에서 페이징된 게시글만 조회  
 		
-		Map<String, Object> pagingResponse = new HashMap<>();
-		pagingResponse.put("posts", boardPage.getContent()); // 페이징된 현재 페이지에 해당하는 게시글 리스트
-		pagingResponse.put("currentPage", boardPage.getNumber()); // 현재 페이지 번호
-		pagingResponse.put("totalPage", boardPage.getTotalPages()); // 모든페이지의 수
-		pagingResponse.put("totalItems", boardPage.getTotalElements()); // 모든 글 수 
-		
-		return ResponseEntity.ok(pagingResponse);
 		
 		
 	}
