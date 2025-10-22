@@ -30,7 +30,7 @@ public class ImageBoardController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	//게시글 페이징 처리
+	//게시글 페이징 처리(게시글 리스트)
 	@GetMapping
 	public ResponseEntity<?> pagingList(@RequestParam(name="page", defaultValue = "0") int page,
 			@RequestParam(name="size", defaultValue = "10")int size) {
@@ -50,6 +50,8 @@ public class ImageBoardController {
 		return ResponseEntity.ok(pagingResponse);		
 			
 		}
+	
+	//게시글 작성
 
 	
 	
